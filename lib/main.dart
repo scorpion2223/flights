@@ -97,7 +97,7 @@ class MyApp extends StatelessWidget {
                 titleTextStyle:
                     TextStyle(color: AppColors.orange2, fontSize: 20)),
           ),
-          home: token == null ? const LoginScreen() : AnnouncementsScreen(flightId: 1),
+          home: token == null ? const LoginScreen() : HomeScreen(),
         ));
   }
 }

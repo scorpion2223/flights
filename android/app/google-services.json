@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1094121220135",
+    "project_id": "flights-a86cd",
+    "storage_bucket": "flights-a86cd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1094121220135:android:7d454772a6c71151ad4602",
+        "android_client_info": {
+          "package_name": "com.example.flightes"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB3atTBYe-zzs8RRuoZUc5hOM4ujI9VBFk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

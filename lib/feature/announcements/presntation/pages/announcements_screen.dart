@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:dio/dio.dart';
 import 'package:flightes/core/utils/constatnts/app_colors.dart';
+import 'package:flightes/core/utils/scaffold_message_util.dart';
 import 'package:flightes/feature/announcements/data/data_sources/remote/announcements_remote_data_source.dart';
 import 'package:flightes/feature/announcements/data/repositories/announcements_repository_impl.dart';
 import 'package:flightes/feature/announcements/domain/repositories/announcements_repository.dart';
@@ -41,6 +42,9 @@ class _AnnouncementsScreen extends State<AnnouncementsScreen>{
         },
         child:  BlocConsumer<AnnouncementTripCubit,AnnouncementTripState>(
           listener: (context,state){
+            if(state is AnnouncementTripSuccess){
+              ScaffoldMessageUtil().customScaffoldMessenger(context, "success", Colors.green);
+            }
 
           },
           builder: (context,state){
@@ -53,8 +57,12 @@ class _AnnouncementsScreen extends State<AnnouncementsScreen>{
                   height: height/5,
                   decoration: BoxDecoration(image: DecorationImage(image: AssetImage("assets/images/logo.png"))),
                 ),
-                Column(children: [
-                  Text("Announcement Reason",style: TextStyle(color: AppColors.orange1,fontWeight: FontWeight.bold),),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                 Padding(padding: EdgeInsets.symmetric(horizontal: width/10),
+                     child:  Text("Please Choose The Announcement Reason And Send It!",style: TextStyle(color: AppColors.orange1,fontWeight: FontWeight.bold,fontSize: 20),)),
+                 SizedBox(height: height/8,),
                   AnnouncementChooseForm(
                       height: height, listWidth: width, listHeight: height,
                       onAnnouncementsChanged: (value){
@@ -67,10 +75,12 @@ class _AnnouncementsScreen extends State<AnnouncementsScreen>{
                 ],),
 
 
-                TextButton(onPressed: (){
+                TextButton(
+                    style: TextButton.styleFrom(backgroundColor: AppColors.orange2),
+                    onPressed: (){
                   context.read<AnnouncementTripCubit>().announcementsTrip();
 
-                }, child: (state is AnnouncementTripLoading)?CircularProgressIndicator():Text("Send Announcement"))
+                }, child: (state is AnnouncementTripLoading)?CircularProgressIndicator():Text("Send Announcement",style: TextStyle(color: AppColors.white),))
 
               ],
             );

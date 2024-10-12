@@ -22,6 +22,8 @@ class HotelsHomeScreen extends StatefulWidget {
 
 class _HotelsHomeScreen extends State<HotelsHomeScreen> {
   @override
+  void dispose();
+  @override
   Widget build(BuildContext context) {
     final double width = MediaQuery.of(context).size.width;
 
@@ -48,7 +50,7 @@ class _HotelsHomeScreen extends State<HotelsHomeScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    const Text("city code",style: TextStyle(color: AppColors.orange1,fontSize: 20),),
+                    const Text("city",style: TextStyle(color: AppColors.orange1,fontSize: 20),),
                     CityCodeForm(
                         height: height,
                         listWidth: width,
@@ -73,7 +75,7 @@ class _HotelsHomeScreen extends State<HotelsHomeScreen> {
                 ),
                 IconButton(onPressed: (){
                   context.read<GetHotelsCubit>().getHotels();
-                }, icon: Icon(Icons.filter_alt_outlined,color: AppColors.blue2,size: 50,)),
+                }, icon: Icon(Icons.search,color:  AppColors.blue2,size: 50,)),
                 SizedBox(
                   height: height / 20,
                 ),
@@ -83,7 +85,7 @@ class _HotelsHomeScreen extends State<HotelsHomeScreen> {
                     ? Center(
                         child: Container(
                         width: width / 1.2,
-                        height: height / 1.8,
+                        height: height / 2,
                         child: listHotels(state.entity.original!.data!,width,height),
                       ))
                     : (state is GetHotelsEmpty)

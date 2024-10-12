@@ -70,7 +70,7 @@ class _HomeScreen extends State<HomeScreen>{
             BottomNavigationBarItem(icon: Icon(Icons.hotel),label: "hotels"),
             BottomNavigationBarItem(icon: Icon(Icons.flight_takeoff_sharp),label: "flights"),
             BottomNavigationBarItem(icon: Icon(Icons.local_airport),label: "airports"),
-            BottomNavigationBarItem(icon: Icon(Icons.notifications),label: "notifications"),
+          //  BottomNavigationBarItem(icon: Icon(Icons.notifications),label: "notifications"),
           ],
         ),
       );

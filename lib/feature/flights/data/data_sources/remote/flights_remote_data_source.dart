@@ -26,9 +26,11 @@ class FlightsRemoteDataSourceWithDio implements FlightsRemoteDataSource{
   Future<FlightsOffersWithPricingModel> getFlightsOffer(SearchParam param)
   async{
     final data = param.toJson();
-  try{  final response = await dio.get("$BASE_URL_$GET_OFFERS_",options: DioOptionUtils().options,data: data);
+    final response = await dio.get("$BASE_URL_$GET_OFFERS_",options: DioOptionUtils().options,data: data);
+log(response.data.toString());
     if(response.statusCode == 200){
       if(response.data['data']['original']['error']!=null){
+        log(response.data.toString());
        throw FieldFitchException();
      }
      log(response.data.toString());
@@ -36,9 +38,7 @@ class FlightsRemoteDataSourceWithDio implements FlightsRemoteDataSource{
    }else{
      throw ServerException();
    }
-  }catch (e){
-    throw UnExpictedException();
-  }
+
 
   }
 }

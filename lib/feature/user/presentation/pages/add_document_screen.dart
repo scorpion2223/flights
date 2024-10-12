@@ -100,6 +100,10 @@ class _AddDocumentScreen extends State<AddDocumentScreen> {
                                 .read<AddDocumentCubit>()
                                 .param
                                 .documentName = value.name;
+                            context
+                                .read<AddDocumentCubit>()
+                                .param
+                                .documentNumber = value.name;
 
                             setState(() {
                               log(context
@@ -202,35 +206,35 @@ class _AddDocumentScreen extends State<AddDocumentScreen> {
                   SizedBox(
                     height: 10,
                   ),
-                  HoolderDocument(
-                      width: width / 1.5,
-                      height: height / 6,
-                      onPressedTrue: () {
-                        context.read<AddDocumentCubit>().param.holder = 1;
-                        isHolder = true;
-                        setState(() {
-                          log(context
-                              .read<AddDocumentCubit>()
-                              .param
-                              .holder
-                              .toString());
-                        });
-                      },
-                      onPressedFalse: () {
-                        context.read<AddDocumentCubit>().param.holder = 0;
-                        isHolder = false;
-                        setState(() {
-                          log(context
-                              .read<AddDocumentCubit>()
-                              .param
-                              .holder
-                              .toString());
-                        });
-                      },
-                      status: isHolder),
-                  SizedBox(
-                    height: 10,
-                  ),
+                  // HoolderDocument(
+                  //     width: width / 1.5,
+                  //     height: height / 6,
+                  //     onPressedTrue: () {
+                  //       context.read<AddDocumentCubit>().param.holder = 1;
+                  //       isHolder = true;
+                  //       setState(() {
+                  //         log(context
+                  //             .read<AddDocumentCubit>()
+                  //             .param
+                  //             .holder
+                  //             .toString());
+                  //       });
+                  //     },
+                  //     onPressedFalse: () {
+                  //       context.read<AddDocumentCubit>().param.holder = 0;
+                  //       isHolder = false;
+                  //       setState(() {
+                  //         log(context
+                  //             .read<AddDocumentCubit>()
+                  //             .param
+                  //             .holder
+                  //             .toString());
+                  //       });
+                  //     },
+                  //     status: isHolder),
+                  // SizedBox(
+                  //   height: 10,
+                  // ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [

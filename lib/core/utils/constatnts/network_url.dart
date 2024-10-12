@@ -2,6 +2,7 @@ class NetworkUrl{
    //static const String baseUrl = "http://192.168.29.87:8000/api/";
  //  static const String baseUrl = "http://192.168.161.87:8000/api/";
    static const String baseUrl = "http://10.0.2.2:8000/api/";
+  // static const String baseUrl = "http://192.168.161.87:8000/api/";
 
 
   //static const String baseUrl = "http://192.168.1.103:80/api/";

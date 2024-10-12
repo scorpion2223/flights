@@ -18,10 +18,10 @@ class FlightsRepositoryImpl implements FlightsRepository{
      return Right(response);
    }on ServerException{
      return Left(ServerFailure());
-   }on UnExpictedException{
-     return Left(UnExpFailure());
    }on FieldFitchException{
      return Left(FieldFitchFailure());
+   }on UnExpictedException{
+     return Left(UnExpFailure());
    }
   }
 

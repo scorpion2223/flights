@@ -51,6 +51,7 @@ class _DocumentTypeForm extends State<DocumentTypeForm> {
             if(state.entity.documents!.isNotEmpty){
             widget.param.documentTypeId = state.entity.documents!.first.id;
             widget.param.documentName = state.entity.documents!.first.name;
+            widget.param.documentNumber = state.entity.documents!.first.name;
 
             }
 
@@ -96,16 +97,23 @@ class _DocumentTypeForm extends State<DocumentTypeForm> {
             width: widget.listWidth / 4,
             height: widget.listHeight * 0.5,
             child: ListView.builder(
-              itemBuilder: (context, index) => TextButton(
-                onPressed: () async {
-                  ctx.read<GetDocumentsTypeCubit>().name = items[index].name!;
+              itemBuilder: (context, index) => Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children:
+                [
+                  TextButton(
+                    onPressed: () async {
+                      ctx.read<GetDocumentsTypeCubit>().name = items[index].name!;
 
-                  widget.onDocumentChanged(items[index]);
-                  setState(() {});
+                      widget.onDocumentChanged(items[index]);
+                      setState(() {});
 
-                  Navigator.pop(context);
-                },
-                child: Text("${index} : ${items[index].name!}"),
+                      Navigator.pop(context);
+                    },
+                    child: Text("${items[index].name!}"),
+                  ),
+                  Divider(),
+                ],
               ),
               itemCount: items.length,
             )));

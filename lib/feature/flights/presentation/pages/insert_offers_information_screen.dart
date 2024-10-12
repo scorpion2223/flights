@@ -37,38 +37,7 @@ class _InsertOffersInformationScreen
                     param = value;
                     setState(() {});
                   }),
-//               Row(
-//                 mainAxisAlignment: MainAxisAlignment.spaceAround,
-//                 children: [ Text("Origin Location Code",style: TextStyle(color: Colors.green),),
-//                 IataCodesForm(
-//                     height: height,
-//                     listWidth: width,
-//                     listHeight: height,
-//                     onIataCodesChanged: (value) {
-//                       param.originLocationCode= value.code;
 //
-//                       setState(() {
-// log( param.originLocationCode.toString());
-//                       });
-//                     },
-//                     param: param),],),
-//               Row(
-//                 mainAxisAlignment: MainAxisAlignment.spaceAround,
-//                 children: [
-//                   Text("Destination Location Code",style: TextStyle(color: Colors.green),),
-//
-//                   IataCodesForm(
-//                       height: height,
-//                       listWidth: width,
-//                       listHeight: height,
-//                       onIataCodesChanged: (value) {
-//                         param.destinationLocationCode =value.code;
-//                         setState(() {
-//
-//                         });
-//                       },
-//                       param: param),
-//                 ],),
 
             IataCodesDouble(height: height, listWidth: width, listHeight: height, onIataCodesChanged:  (value) {
                         param.originLocationCode =value.code;
@@ -89,12 +58,14 @@ class _InsertOffersInformationScreen
                 onPressed: () {
                   var isValid = formState.currentState!.validate();
                   if (isValid) {
-                    log("${param.destinationLocationCode}\n"
-                        "${param.originLocationCode}\n"
-                        "${ param.returnDate}\n"
-                        "${param.max}\n"
-                        "${param.adults}\n"
-                        "${ param.departureDate}\n");
+                    // log("\n"
+                    //     "${param.destinationLocationCode}\n"
+                    //     "${param.originLocationCode}\n"
+                    //     "${ param.returnDate}\n"
+                    //     "${ param.departureDate}\n"
+                    //     "${param.max}\n"
+                    //     "${param.adults}\n"
+                    //     );
                     if (param.codeValidator()) {
                       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                         content: Text(
@@ -110,7 +81,7 @@ class _InsertOffersInformationScreen
                     }
                   }
                 },
-                icon: const Icon(Icons.filter_alt_outlined,size: 70,color: AppColors.blue2,),
+                icon:  Icon(Icons.search,color:  AppColors.blue2,size: 50,),
               )
             ],
           ),

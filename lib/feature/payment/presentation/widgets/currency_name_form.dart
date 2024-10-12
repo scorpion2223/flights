@@ -38,7 +38,7 @@ class _CurrencyNameForm extends State<CurrencyNameForm> {
       height: widget.height/40,
       status: false,
       onPressed: () {
-        _showListDialog(context, alertDialogTitle: "countries", items: currencies);
+        _showListDialog(context, alertDialogTitle: "currency", items: currencies);
       }, name: name,
     );
   }
@@ -58,16 +58,22 @@ class _CurrencyNameForm extends State<CurrencyNameForm> {
             width: widget.listWidth / 4,
             height: widget.listHeight * 0.5,
             child: ListView.builder(
-              itemBuilder: (context, index) => TextButton(
-                onPressed: () async {
-                  name = items[index];
+              itemBuilder: (context, index) => Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  TextButton(
+                    onPressed: () async {
+                      name = items[index];
 
-                  widget.onDocumentChanged(items[index]);
-                  setState(() {});
+                      widget.onDocumentChanged(items[index]);
+                      setState(() {});
 
-                  Navigator.pop(context);
-                },
-                child: Text("${index} : ${items[index]}"),
+                      Navigator.pop(context);
+                    },
+                    child: Text(" ${items[index]}"),
+                  ),
+                  Divider()
+                ],
               ),
               itemCount: items.length,
             )));

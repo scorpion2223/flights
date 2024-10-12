@@ -11,6 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/utils/constatnts/app_colors.dart';
+import '../../../../core/utils/scaffold_message_util.dart';
 
 class PaymentScreen extends StatefulWidget {
   @override
@@ -42,7 +43,14 @@ class _PaymentScreen extends State<PaymentScreen> {
           },
           child: BlocConsumer<StartPaymentCubit,StartPaymentState>(
             listener: (context,state){
+if(state is StartPaymentSuccess){
+  ScaffoldMessageUtil().customScaffoldMessenger(context, "payment success", Colors.green);
 
+}
+if(state is StartPaymentFailed){
+  ScaffoldMessageUtil().customScaffoldMessenger(context, "payment failed", Colors.red);
+
+}
             },
             builder: (context,state){
               return Column(

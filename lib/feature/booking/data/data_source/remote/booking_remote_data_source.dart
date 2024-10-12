@@ -33,6 +33,7 @@ class BookingRemoteDataSourceWithDio implements BookingRemoteDataSource{
     final data = await param.toJsonWithConstants();
     log(data.toString());
    try{ final response = await dio.get("${BASE_URL_}${STORE}",data: data,options: DioOptionUtils().options);
+     log(response.data.toString());
     if(response.statusCode == 200){
       if(response.data["data"]["original"]["error"]==null){
       log(response.data.toString());

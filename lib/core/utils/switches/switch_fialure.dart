@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:flightes/core/errors/exceptions.dart';
 import 'package:flightes/core/utils/constatnts/failure_message.dart';
 
 import '../../errors/failures.dart';
@@ -13,6 +14,9 @@ class SwitchFialure{
       case const (UnExpFailure):
         log("server : ${failure.toString()}");
         return FailureMessage.UNEXPICTED_FAILURE_MESSAGE;
+      case const (FieldFitchFailure):
+        log("server : ${failure.toString()}");
+        return FailureMessage.FITCH_FAILURE_MESSAGE;
 
       default:
         log("Un Expected : ${failure.runtimeType.toString()}");

@@ -30,7 +30,7 @@ class _AirPorstHomeScreen extends State<AirPorstHomeScreen> {
     final double height = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
-        title: const Text("AirPorts"),
+        title: const Text("Airports"),
       ),
       body: BlocProvider(
         create: (context) {
@@ -58,7 +58,7 @@ class _AirPorstHomeScreen extends State<AirPorstHomeScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         Text(
-                          "keyword",
+                          "City",
                           style: TextStyle(color: AppColors.orange1),
                         ),
                         KeyWordForm(
@@ -81,7 +81,7 @@ class _AirPorstHomeScreen extends State<AirPorstHomeScreen> {
                     Column(
                       children: [
                         Text(
-                          "country code",
+                          "country",
                           style: TextStyle(color:  AppColors.orange1),
                         ),
                         CountryCodeForm(
@@ -108,7 +108,7 @@ class _AirPorstHomeScreen extends State<AirPorstHomeScreen> {
                 ),
                 IconButton(onPressed: (){
                   context.read<GetAirPortsCubit>().getAirPorts();
-                }, icon: Icon(Icons.filter_alt_outlined,color:  AppColors.blue2,size: 50,)),
+                }, icon: Icon(Icons.search,color:  AppColors.blue2,size: 50,)),
                 SizedBox(
                   height: height / 30,
                 ),

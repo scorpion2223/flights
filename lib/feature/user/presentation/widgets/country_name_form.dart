@@ -63,16 +63,22 @@ class _CountryNameForm extends State<CountryNameForm> {
             width: widget.listWidth / 4,
             height: widget.listHeight * 0.5,
             child: ListView.builder(
-              itemBuilder: (context, index) => TextButton(
-                onPressed: () async {
-                  name = items[index];
+              itemBuilder: (context, index) => Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  TextButton(
+                    onPressed: () async {
+                      name = items[index];
 
-                  widget.onDocumentChanged(items[index]);
-                  setState(() {});
+                      widget.onDocumentChanged(items[index]);
+                      setState(() {});
 
-                  Navigator.pop(context);
-                },
-                child: Text("${index} : ${items[index]}"),
+                      Navigator.pop(context);
+                    },
+                    child: Text("${items[index]}"),
+                  ),
+                  Divider()
+                ],
               ),
               itemCount: items.length,
             )));

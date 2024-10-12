@@ -23,13 +23,14 @@ class ContactComponent extends StatelessWidget{
             border: Border.all(color: AppColors.orange1,style: BorderStyle.solid,width: (width/4)*(0.02)),
             borderRadius: BorderRadius.circular(10),
           ),
-          width: width,
+          width: width/1.5,
           height: height,
           child:Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Container(
                 alignment: Alignment.center,
+                padding: EdgeInsets.symmetric(horizontal: width/30),
                 width: width/4,
                 height: height,
                 decoration: BoxDecoration(
@@ -38,55 +39,52 @@ class ContactComponent extends StatelessWidget{
                 ),
 
                 child:Text("${contact.companyName}",
-                    style: TextStyle(color: AppColors.white,fontWeight: FontWeight.bold)),
+                    style: TextStyle(color: AppColors.white,fontWeight: FontWeight.bold,fontSize: 16)),
               ),
+
               Expanded(child:     Container(
+
+
 
                 height: height,
 
-                child: Column(children: [
-                  Center(child: Text("city : ${contact.address!.cityName}",style: TextStyle(color: AppColors.orange1,fontWeight: FontWeight.bold),),),
-
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                child:Padding(
+                  padding: EdgeInsets.only(left: width/50),
+                  child:  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Text("${contact.addresseeName!.firstName}",style: TextStyle(color: AppColors.orange1,fontWeight: FontWeight.bold),),
+                      Text("city : ${contact.address!.cityName}",style: TextStyle(color: AppColors.orange1,fontWeight: FontWeight.bold,fontSize: 18),),
 
-                      Text("${contact.addresseeName!.lastName}",style: TextStyle(color: AppColors.orange1,fontWeight: FontWeight.bold),),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
 
-                    ],),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Text("${ contact.address!.cityName}",style: TextStyle(color: AppColors.orange1,fontWeight: FontWeight.bold),),
+                          Text("name : ${contact.addresseeName!.firstName}",style: TextStyle(color: AppColors.orange1,fontWeight: FontWeight.bold,fontSize: 18),),
 
-                      Text("${contact.address!.countryCode}",style: TextStyle(color: AppColors.orange1,fontWeight: FontWeight.bold),),
+                          Text(" ${contact.addresseeName!.lastName}",style: TextStyle(color: AppColors.orange1,fontWeight: FontWeight.bold,fontSize: 18),),
 
-                    ],),
-                  // Row(
-                  //   mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  //   children: [
-                  //     Text("${ DateFormat('HH:mm:ss t').format(contact.itineraries!.first.segments!.first.departure!.at!)}",style: TextStyle(color: AppColors.orange1,fontWeight: FontWeight.bold),),
-                  //
-                  //     Text("${DateFormat('HH:mm:ss').format(contact.itineraries!.first.segments!.first.arrival!.at!)}",style: TextStyle(color: AppColors.orange1,fontWeight: FontWeight.bold),),
-                  //
-                  //   ],),
+                        ],),
+                      Text("email : ${contact.emailAddress}",style: TextStyle(color: AppColors.orange1,fontWeight: FontWeight.bold,fontSize: 18),),
+                      Text("Phone: ${contact.phones!.first.number} ",style: TextStyle(color: AppColors.orange1,fontWeight: FontWeight.bold,fontSize: 18),),
 
-                  Expanded(child: SizedBox()),
-                  Container(
 
-                    height: height/3.5,
-                    width: double.infinity,
-                    color: AppColors.blue2.withOpacity(0.5),
-                    child: Column(children: [
-                      Center(child: Text("Phone: ${contact.phones!.first.number} ",style: TextStyle(color: AppColors.orange1,fontWeight: FontWeight.bold),)),
 
+
+                      // Container(
+                      //
+                      //   height: height/3.5,
+                      //   width: double.infinity,
+                      //   color: AppColors.blue2.withOpacity(0.5),
+                      //   child: Column(children: [
+                      //
+                      //
+                      //   ],),
+                      // ),
+                      SizedBox(height: height/30,)
 
                     ],),
-                  ),
-                  SizedBox(height: height/30,)
-
-                ],),
+                ),
               )),
             ],));
 

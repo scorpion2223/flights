@@ -56,53 +56,42 @@ class FlightComponent extends StatelessWidget{
                 ),
                 width: width,
                 height: height,
-                child:Column(children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Container(
-                        alignment: Alignment.center,
-                        width: width/4,
-                        height: height/1.2,
-                        decoration: BoxDecoration(
-                          color: AppColors.blue2,
-                          borderRadius: BorderRadius.only(bottomLeft: Radius.circular(10),topLeft:  Radius.circular(10)),
-                        ),
-
-                        child:Text("${flight.type}",
-                            style: TextStyle(color: AppColors.white,fontWeight: FontWeight.bold)),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Container(
+                      alignment: Alignment.center,
+                      width: width/4,
+                      height: height,
+                      decoration: BoxDecoration(
+                        color: AppColors.blue2,
+                        borderRadius: BorderRadius.only(bottomLeft: Radius.circular(10),topLeft:  Radius.circular(10)),
                       ),
-                      Expanded(child:     Container(
 
-                        height: height/1.2,
+                      child:Text("${flight.type}",
+                          style: TextStyle(color: AppColors.white,fontWeight: FontWeight.bold)),
+                    ),
+                    Expanded(child:
+                    Container(
 
-                        child: Column(children: [
-                          Center(child: Text("Source : ${flight.source}",style: TextStyle(color: AppColors.orange1,fontWeight: FontWeight.bold),),),
+                      height: height,
 
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              //   Text("${flight.itineraries!.first.segments!.first.departure!.iataCode!.name}",style: TextStyle(color: AppColors.orange1,fontWeight: FontWeight.bold),),
-                              Icon(Icons.arrow_right_alt_sharp),
-                              Text("${flight.itineraries!.first.segments!.last.duration}",style: TextStyle(color: AppColors.orange1,fontWeight: FontWeight.bold),),
+                      child:Padding(padding: EdgeInsets.only(left: width/60),
+                      child:  Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Center(child: Text("",style: TextStyle(color: Colors.black.withOpacity(0.8),fontWeight: FontWeight.bold),),),
 
-                            ],),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              Text("${ DateFormat('yyyy-MM-dd').format(flight.itineraries!.first.segments!.first.departure!.at!)}",style: TextStyle(color: AppColors.orange1,fontWeight: FontWeight.bold),),
 
-                              Text("${DateFormat('yyyy-MM-dd').format(flight.itineraries!.first.segments!.first.arrival!.at!)}",style: TextStyle(color: AppColors.orange1,fontWeight: FontWeight.bold),),
+                          Text("Departure : ${ DateFormat('yyyy-MM-dd').format(flight.itineraries!.first.segments!.first.departure!.at!)}",style: TextStyle(color: AppColors.orange1,fontWeight: FontWeight.bold),),
 
-                            ],),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              Text("${ DateFormat('HH:mm:ss t').format(flight.itineraries!.first.segments!.first.departure!.at!)}",style: TextStyle(color: AppColors.orange1,fontWeight: FontWeight.bold),),
+                          Text("Arrival : ${DateFormat('yyyy-MM-dd').format(flight.itineraries!.first.segments!.first.arrival!.at!)}",style: TextStyle(color: AppColors.orange1,fontWeight: FontWeight.bold),),
 
-                              Text("${DateFormat('HH:mm:ss').format(flight.itineraries!.first.segments!.first.arrival!.at!)}",style: TextStyle(color: AppColors.orange1,fontWeight: FontWeight.bold),),
+                          Text("D_Time : ${ DateFormat('HH:mm:ss ').format(flight.itineraries!.first.segments!.first.departure!.at!)}",style: TextStyle(color: AppColors.orange1,fontWeight: FontWeight.bold),),
 
-                            ],),
+                          Text("A_Time : ${DateFormat('HH:mm:ss').format(flight.itineraries!.first.segments!.first.arrival!.at!)}",style: TextStyle(color: AppColors.orange1,fontWeight: FontWeight.bold),),
+
+
 
                           Expanded(child: SizedBox()),
                           Container(
@@ -111,27 +100,34 @@ class FlightComponent extends StatelessWidget{
                             width: double.infinity,
                             color: AppColors.blue2.withOpacity(0.5),
                             child: Column(children: [
-                              Center(child: Text("Total Price: ${flight.price!.total.toString()} ",style: TextStyle(color: AppColors.orange1,fontWeight: FontWeight.bold),)),
-                              Center(child: Text(" ${flight.price!.currency!.name.toString()} ",style: TextStyle(color: AppColors.orange1,fontWeight: FontWeight.bold),)),
+                              Center(child: Text("Total Price: ",style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 15),)),
+                              Center(child: Text(" ${flight.price!.total.toString()} ${flight.price!.currency!.name.toString()} ",style: TextStyle(color: Colors.red,fontWeight: FontWeight.bold),)),
 
 
                             ],),
                           ),
                           SizedBox(height: height/30,)
 
-                        ],),
-                      )),
+                        ],),),
+                    )),
+                    Container(
+                      color: AppColors.white.withOpacity(0.6),
 
-                    ],),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                    IconButton(onPressed: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>AnnouncementsScreen(flightId:int.parse(flight.id!))));
-                    }, icon: Icon(Icons.announcement)),
+                      width: width/4,
+                      child: Column(
+                        mainAxisAlignment:MainAxisAlignment.spaceAround,
+                        children: [
+                          IconButton(onPressed: (){
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=>AnnouncementsScreen(flightId: int.parse(flight.id!))));
+                          }, icon: Icon(Icons.announcement,color: AppColors.blue2,)),
+                          IconButton(onPressed: (){
+                            context.read<GetTravelersCubit>()..getTravelers();
+                          }, icon: Icon(Icons.bookmark_add,color: AppColors.blue2,))
 
-                  ],),
-                ],)),
+                      ],),
+                    ),
+
+                  ],),),
           );
         },
       ),);

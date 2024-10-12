@@ -39,8 +39,9 @@ class UserDetails extends StatelessWidget {
                 children: [
                   Text("${state.entity.userDetails!.first.name!}",style: TextStyle(color: AppColors.white,fontSize: 20),),
                   Text("${state.entity.userDetails!.first.email!}",style: TextStyle(color: AppColors.white,fontSize: 15),),
-                  Text("points: ${state.entity.userDetails!.first.points!.toString()}",style: TextStyle(color: AppColors.white,fontSize: 20),),
-                  Text("is active: ${state.entity.userDetails!.first.isActive}",style: TextStyle(color: AppColors.white,fontSize: 20),),
+                //  Text("points: ${state.entity.userDetails!.first.points!.toString()}",style: TextStyle(color: AppColors.white,fontSize: 20),),
+                  state.entity.userDetails!.first.isActive!?
+                  Text("status: valid",style: TextStyle(color: AppColors.white,fontSize: 20),):Text("status: blocked",style: TextStyle(color: AppColors.white,fontSize: 20),),
 
 
 

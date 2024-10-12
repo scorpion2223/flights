@@ -60,15 +60,7 @@ class _DocumentForm extends State<DocumentForm>{
 
             ],),
             SizedBox(height: 10,),
-          SizedBox(
-            width: widget.width/1.2,
-           child:  DocumentNumberField(
-              currentValue: widget.param.documentNumber,
 
-              onChanged: (value)=>widget.onChanged(widget.param.copyWith(documentNumber: value)),
-              validator: widget.param.emptyValidator,
-              hintText: 'Document Number',)),
-            SizedBox(height: 10,),
             SizedBox(height: 10,),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,

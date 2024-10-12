@@ -95,7 +95,7 @@ class MyApp extends StatelessWidget {
             appBarTheme: const AppBarTheme(
                 color: AppColors.blue2,
                 titleTextStyle:
-                    TextStyle(color: AppColors.orange2, fontSize: 20)),
+                    TextStyle(color: AppColors.white, fontSize: 20)),
           ),
           home: token == null ? const LoginScreen() : HomeScreen(),
         ));

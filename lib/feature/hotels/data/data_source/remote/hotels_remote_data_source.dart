@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
 import 'package:flightes/core/errors/exceptions.dart';
 import 'package:flightes/core/params/hotels_param.dart';
@@ -24,6 +26,7 @@ class HotelsRemoteDataSourceWithDio implements HotelsRemoteDataSource{
     final data = param.toJson();
   try{ final response = await dio.get("$BASE_URL_$GET",data: data,options: DioOptionUtils().options);
    if(response.statusCode == 200){
+     log("hotels : ${response.data}");
      return HotelsModel.fromJson(response.data);
    }else{
      throw ServerException();

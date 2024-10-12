@@ -33,7 +33,7 @@ class GetAirPortsCubit extends Cubit<GetAirPortsState> {
               emit(GetAirPortsSuccess(entity: success));
             }else{
               log("empty");
-              emit(GetAirPortsEmpty(message: "no air ports founded !"));
+              emit(GetAirPortsEmpty(message: "no airports founded !"));
             }
 
 

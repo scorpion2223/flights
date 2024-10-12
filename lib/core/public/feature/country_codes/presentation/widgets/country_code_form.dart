@@ -67,11 +67,11 @@ class _CountryCodeForm extends State<CountryCodeForm> {
                 status: false,
                 onPressed: () {
                   _showListDialog(context,
-                    alertDialogTitle: "codes",
+                    alertDialogTitle: "countries",
                     items: state.entity.data!.countries!,
                   );
                 },
-                name: context.read<GetCountryCodesCubit>().code);
+                name: context.read<GetCountryCodesCubit>().name);
           }
           return Center();
         },
@@ -94,16 +94,23 @@ class _CountryCodeForm extends State<CountryCodeForm> {
             width: widget.listWidth / 4,
             height: widget.listHeight * 0.5,
             child: ListView.builder(
-              itemBuilder: (context, index) => TextButton(
-                onPressed: () async {
-                  ctx.read<GetCountryCodesCubit>().code = items[index].code!;
+              itemBuilder: (context, index) => Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  TextButton(
+                    onPressed: () async {
+                      ctx.read<GetCountryCodesCubit>().code = items[index].code!;
+                      ctx.read<GetCountryCodesCubit>().name = items[index].countryName!;
 
-                  widget.onCountryCodesChanged(items[index]);
-                  setState(() {});
+                      widget.onCountryCodesChanged(items[index]);
+                      setState(() {});
 
-                  Navigator.pop(context);
-                },
-                child: Text("${index} : ${items[index].code!}"),
+                      Navigator.pop(context);
+                    },
+                    child: Text("${items[index].countryName!}"),
+                  ),
+                  Divider()
+                ],
               ),
               itemCount: items.length,
             )));

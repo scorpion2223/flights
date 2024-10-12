@@ -70,11 +70,11 @@ class ProfileHomeScreen extends StatelessWidget {
               builder: (context, state) {
                 return IconButton(
                     onPressed: () {
-                      context.read<AuthCubit>().logout();
+                      // context.read<AuthCubit>().logout();
                     },
                     icon: (state is AuthLoading)
                         ? const CircularProgressIndicator()
-                        : const Icon(Icons.logout));
+                        :  Icon(Icons.notifications,color: AppColors.white,));
               },
             ),
           ),

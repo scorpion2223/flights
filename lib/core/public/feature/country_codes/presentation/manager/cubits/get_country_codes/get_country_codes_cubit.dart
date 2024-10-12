@@ -10,6 +10,7 @@ class GetCountryCodesCubit extends Cubit<GetCountryCodesState> {
   final GetCountryCodesUseCase getCountryCodesUseCase;
   SwitchFialure switchFialure = SwitchFialure();
   late String code;
+  late String name;
   GetCountryCodesCubit({required this.getCountryCodesUseCase}) : super(GetCountryCodesInitial());
 
   Future<void> getCodes()async{
@@ -24,6 +25,7 @@ class GetCountryCodesCubit extends Cubit<GetCountryCodesState> {
             (success){
           if(success.data!.countries!.isNotEmpty){
             code = success.data!.countries!.first.code!;
+            name = success.data!.countries!.first.countryName!;
 
             emit(GetCountryCodesSuccess(entity: success));}
           else{

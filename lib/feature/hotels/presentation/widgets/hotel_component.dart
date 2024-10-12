@@ -38,12 +38,12 @@ class HotelComponent extends StatelessWidget{
          children: [
          Text(hotel.name!,
            style: TextStyle(
-           fontSize: 10,
+           fontSize: 15,
              fontWeight: FontWeight.bold,
              color: AppColors.orange1
          ),),
 
-         Text("hotel ID: ${hotel.hotelId}"),
+
 
 
        ],),

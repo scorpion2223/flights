@@ -11,6 +11,7 @@ import 'package:flightes/feature/booking/data/repositories/booking_repository_im
 import 'package:flightes/feature/booking/domain/repositories/booking_repository.dart';
 import 'package:flightes/feature/booking/domain/usecases/store_booking_use_case.dart';
 import 'package:flightes/feature/booking/presentation/manager/cubits/store_booking/store_booking_cubit.dart';
+import 'package:flightes/feature/payment/presentation/pages/payment_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -78,6 +79,7 @@ class ContactsScreen extends StatelessWidget {
                       listener: (context, state) {
                         if(state is StoreBookingSuccess){
                           ScaffoldMessageUtil().customScaffoldMessenger(context, "booking success", Colors.green);
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=>PaymentScreen()));
                         }
                         if(state is StoreBookingFailed){
                           ScaffoldMessageUtil().customScaffoldMessenger(context, "booking Failed!", Colors.red);
@@ -136,6 +138,6 @@ class ContactsScreen extends StatelessWidget {
         itemBuilder: (context, index) => Padding(
             padding: const EdgeInsets.symmetric(vertical: 10),
             child: ContactComponent(
-                contact: list[index], width: width, height: height)));
+                contact: list[index], width: width, height: height/1.5)));
   }
 }

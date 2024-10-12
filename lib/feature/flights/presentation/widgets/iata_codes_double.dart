@@ -72,13 +72,13 @@ class _IataCodesDouble extends State<IataCodesDouble> {
             return Column(children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [ Text("Origin Location Code",style: TextStyle(color: AppColors.orange2),),
+                children: [ Text("Origin Location",style: TextStyle(color: AppColors.orange2),),
                   CodeChooser(
                       height: widget.height / 40,
                       status: false,
                       onPressed: () {
                         _showListDialog(context,
-                          alertDialogTitle: "codes",
+                          alertDialogTitle: "cities",
                           items: state.entity.data!,
                         );
                       },
@@ -86,13 +86,13 @@ class _IataCodesDouble extends State<IataCodesDouble> {
                ],),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [ Text("Destination Location Code",style: TextStyle(color: AppColors.orange2),),
+                children: [ Text("Destination Location",style: TextStyle(color: AppColors.orange2),),
                   CodeChooser(
                       height: widget.height / 40,
                       status: false,
                       onPressed: () {
                         _showListDialog2(context,
-                          alertDialogTitle: "codes",
+                          alertDialogTitle: "cities",
                           items: state.entity.data!,
                         );
                       },
@@ -123,17 +123,23 @@ class _IataCodesDouble extends State<IataCodesDouble> {
             width: widget.listWidth / 4,
             height: widget.listHeight * 0.5,
             child: ListView.builder(
-              itemBuilder: (context, index) => TextButton(
-                onPressed: () async {
-                  ctx.read<GetIataCodesCubit>().code = items[index].code!;
-                  ctx.read<GetIataCodesCubit>().name1 = items[index].name!;
+              itemBuilder: (context, index) => Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  TextButton(
+                    onPressed: () async {
+                      ctx.read<GetIataCodesCubit>().code = items[index].code!;
+                      ctx.read<GetIataCodesCubit>().name1 = items[index].name!;
 
-                  widget.onIataCodesChanged(items[index]);
-                  setState(() {});
+                      widget.onIataCodesChanged(items[index]);
+                      setState(() {});
 
-                  Navigator.pop(context);
-                },
-                child: Text("${index} : ${items[index].name!}"),
+                      Navigator.pop(context);
+                    },
+                    child: Text("${index+1} : ${items[index].name!}"),
+                  ),
+                  Divider(),
+                ],
               ),
               itemCount: items.length,
             )));
@@ -160,17 +166,23 @@ class _IataCodesDouble extends State<IataCodesDouble> {
             width: widget.listWidth / 4,
             height: widget.listHeight * 0.5,
             child: ListView.builder(
-              itemBuilder: (context, index) => TextButton(
-                onPressed: () async {
-                  ctx.read<GetIataCodesCubit>().code2 = items[index].code!;
-                  ctx.read<GetIataCodesCubit>().name2 = items[index].name!;
+              itemBuilder: (context, index) => Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  TextButton(
+                    onPressed: () async {
+                      ctx.read<GetIataCodesCubit>().code2 = items[index].code!;
+                      ctx.read<GetIataCodesCubit>().name2 = items[index].name!;
 
-                  widget.onIataCodesChanged2(items[index]);
-                  setState(() {});
+                      widget.onIataCodesChanged2(items[index]);
+                      setState(() {});
 
-                  Navigator.pop(context);
-                },
-                child: Text("${index} : ${items[index].name!}"),
+                      Navigator.pop(context);
+                    },
+                    child: Text("${index+1} : ${items[index].name!}"),
+                  ),
+                  Divider(),
+                ],
               ),
               itemCount: items.length,
             )));

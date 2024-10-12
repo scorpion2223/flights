@@ -1,3 +1,4 @@
+import 'package:flightes/core/utils/constatnts/app_colors.dart';
 import 'package:flutter/material.dart';
 
 
@@ -40,7 +41,7 @@ class _AnnouncementChoose extends State<AnnouncementChoose>{
 
           child: Row(
             children: [
-              Expanded(child:Center(child: Text(widget.name))),
+              Expanded(child:Center(child: Text(widget.name,style: TextStyle(color: AppColors.blue2,fontWeight: FontWeight.bold,fontSize: 20),))),
               IconButton(
 
                   onPressed: widget.onPressed,

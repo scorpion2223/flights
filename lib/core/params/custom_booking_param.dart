@@ -3,6 +3,7 @@ import 'package:flightes/core/params/search_param.dart';
 import 'package:flightes/core/params/ticketing_agreement_param.dart';
 import 'package:intl/intl.dart';
 
+import '../../main.dart';
 import '../public/feature/contacts/domain/entities/contacts_entity.dart';
 import '../public/feature/travelers/domain/entities/travelers_entity.dart';
 
@@ -69,6 +70,7 @@ final ContactsEntity entityContacts;
     return {
       "data": {
         "type": "flight-order",
+        "user_id":userID,
         "originLocationCode": paramSearch.originLocationCode,
         "destinationLocationCode": paramSearch.destinationLocationCode,
         "departureDate":  DateFormat('yyyy-MM-dd').format(paramSearch.departureDate!).toString(),

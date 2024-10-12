@@ -71,7 +71,7 @@ class _AnnouncementChooseForm extends State<AnnouncementChooseForm> {
                 status: false,
                 onPressed: () {
                   _showListDialog(context,
-                    alertDialogTitle: "codes",
+                    alertDialogTitle: "Issues",
                     items: state.entity.data!.announcements!,
                   );
                 },
@@ -99,16 +99,22 @@ class _AnnouncementChooseForm extends State<AnnouncementChooseForm> {
             width: widget.listWidth / 4,
             height: widget.listHeight * 0.5,
             child: ListView.builder(
-              itemBuilder: (context, index) => TextButton(
-                onPressed: () async {
-                  ctx.read<GetAnnouncementsCubit>().name = items[index].name!;
+              itemBuilder: (context, index) => Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  TextButton(
+                    onPressed: () async {
+                      ctx.read<GetAnnouncementsCubit>().name = items[index].name!;
 
-                  widget.onAnnouncementsChanged(items[index]);
-                  setState(() {});
+                      widget.onAnnouncementsChanged(items[index]);
+                      setState(() {});
 
-                  Navigator.pop(context);
-                },
-                child: Text("${index} : ${items[index].name!}"),
+                      Navigator.pop(context);
+                    },
+                    child: Text("${index+1} : ${items[index].name!}"),
+                  ),
+                  Divider()
+                ],
               ),
               itemCount: items.length,
             )));

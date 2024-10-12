@@ -72,11 +72,11 @@ class _CityCodeForm extends State<CityCodeForm> {
                 status: false,
                 onPressed: () {
                   _showListDialog(context,
-                    alertDialogTitle: "codes",
+                    alertDialogTitle: "cities",
                     items: state.entity.data!,
                   );
                 },
-                name: context.read<GetIataCodesCubit>().code);
+                name: context.read<GetIataCodesCubit>().name1);
           }
           return Center();
         },
@@ -99,17 +99,23 @@ class _CityCodeForm extends State<CityCodeForm> {
             width: widget.listWidth / 4,
             height: widget.listHeight * 0.5,
             child: ListView.builder(
-              itemBuilder: (context, index) => TextButton(
-                onPressed: () async {
-                  ctx.read<GetIataCodesCubit>().code = items[index].code!;
+              itemBuilder: (context, index) => Column(
+               crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                TextButton(
+                  onPressed: () async {
+                    ctx.read<GetIataCodesCubit>().code = items[index].code!;
+                    ctx.read<GetIataCodesCubit>().name1 = items[index].name!;
 
-                  widget.onIataCodesChanged(items[index]);
-                  setState(() {});
+                    widget.onIataCodesChanged(items[index]);
+                    setState(() {});
 
-                  Navigator.pop(context);
-                },
-                child: Text("${index} : ${items[index].code!}"),
-              ),
+                    Navigator.pop(context);
+                  },
+                  child: Text(" ${items[index].name!}"),
+                ),
+                Divider(),
+              ],),
               itemCount: items.length,
             )));
 

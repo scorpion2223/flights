@@ -19,29 +19,39 @@ class AirPortComponent extends StatelessWidget{
           ),
           width: width,
           height: height,
-          child:Column(
+          child:Row(
 
             children: [
 
-
-              Expanded(child:
               Container(
+                width: width/2,
                 height: height,
-                alignment: Alignment.center,
 
-                child: Column(children: [
-                  Text(airPort.name!,style: TextStyle(color: AppColors.orange1,fontWeight: FontWeight.bold),),
-                  Text(airPort.address!.countryName.toString()),
-                  Text(airPort.address!.cityName.toString()),
-
-                ],),
-              )),
-              Container(
-                height: height/2,
                 decoration: BoxDecoration(
-                  image: DecorationImage(image: AssetImage("assets/images/airport.png")),
+                  image: DecorationImage(
+                      image: AssetImage("assets/images/airport.png"),
+                      fit: BoxFit.contain
+                  ),
                 ),
               ),
+
+              Container(
+                padding: EdgeInsets.only(left: width/10),
+                height: height,
+                width: width/2.2,
+                alignment: Alignment.center,
+
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                  Text(airPort.name!,style: TextStyle(color: AppColors.orange1,fontWeight: FontWeight.bold),),
+                  Text("${airPort.address!.countryName.toString()}\n${airPort.address!.cityName.toString()}"),
+                  // Text(airPort.address!.cityName.toString()),
+
+                ],),
+              ),
+
             ],));
 
 
